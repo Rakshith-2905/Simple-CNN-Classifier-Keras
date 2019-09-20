@@ -148,4 +148,4 @@ if __name__ == "__main__":
     predict(model_path = 'model.h5', 
             data_path = 'dataset/test_set/', 
             image_size = (64,64,3),
-            n_images = 5)
+            n_images = 20)

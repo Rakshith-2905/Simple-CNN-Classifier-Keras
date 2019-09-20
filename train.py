@@ -19,16 +19,25 @@ import os
 from keras.models import Sequential, load_model
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization
 from keras.preprocessing.image import ImageDataGenerator
+import matplotlib.pyplot as plt
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+# Uncomment the below line if not using GPU
+# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 def create_classifier(image_shape = (64, 64, 3)):
+    """
+    _func_: This functions creates a CNN classifier
+    Input:
+        image_shape: shape of the image for training
 
+    Return:
+        classifier: constructed model file
+    """
     # Initialising a sequential CNN
     classifier = Sequential()
 
     # 1st Convolution layer
-    no_kernel_conv1 = 32
+    no_kernel_conv1 = 8
     size_kernel_conv1 = (3,3)
     classifier.add(Conv2D(no_kernel_conv1, 
                             size_kernel_conv1, 
@@ -40,7 +49,7 @@ def create_classifier(image_shape = (64, 64, 3)):
     classifier.add(MaxPooling2D(pool_size = size_kernel_pool1))
 
     # 2st Convolution layer
-    no_kernel_conv2 = 32
+    no_kernel_conv2 = 16
     size_kernel_conv2 = (3,3)
     classifier.add(Conv2D(no_kernel_conv2, size_kernel_conv2, activation = 'relu'))
 
@@ -52,7 +61,7 @@ def create_classifier(image_shape = (64, 64, 3)):
     classifier.add(Flatten())
 
     # Fully connected layers
-    number_fc_neuron = 256
+    number_fc_neuron = 128
     classifier.add(Dense(units = number_fc_neuron, activation = 'relu'))
 
     # Final classification layer
@@ -91,18 +100,36 @@ if __name__ == "__main__":
                                                 batch_size = 32,
                                                 class_mode = 'binary')
 
+
+    # Save the model configuration to a text file
+    with open('model_report.txt','w') as fh:
+        # Pass the file handle in as a lambda function to make it callable
+        classifier.summary(print_fn=lambda x: fh.write(x + '\n'))
+
     # Training the classifier
     model = classifier.fit_generator(training_set,
                             steps_per_epoch = 2000,
-                            epochs = 5,
+                            epochs = 10,
                             validation_data = validation_set,
                             validation_steps = 1000)
 
     # Saving the trained model
     classifier.save('model.h5')
 
-    # Save the model configuration to a text file
-    with open('model_report.txt','w') as fh:
-        # Pass the file handle in as a lambda function to make it callable
-        model.summary(print_fn=lambda x: fh.write(x + '\n'))
+    plt.plot(model.history['acc'])
+    plt.plot(model.history['val_acc'])
+    plt.title('model accuracy')
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'validation'], loc='upper_left')
+    plt.show()
+    plt.savefig('accuray_plt.png')
 
+    plt.plot(model.history['loss'])
+    plt.plot(model.history['val_loss'])
+    plt.title('model loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'validation'], loc='upper_left')
+    plt.show()
+    plt.savefig('loss_plt.png')
