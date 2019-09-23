@@ -9,10 +9,10 @@ What's all the bells and whistles this project can perform?
 * Visualize intermediate Layers
 
 
-![Convolution 2D][feature_map.png]
+![Convolution 2D](feature_map.png)
 
 
-![Test Image][dataset/test_set/cat_or_dog_2.jpg]
+![Test Image](dataset/test_set/cat_or_dog_2.jpg)
 
 
 ## Getting started
