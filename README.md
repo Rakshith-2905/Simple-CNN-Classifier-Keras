@@ -9,17 +9,17 @@ What's all the bells and whistles this project can perform?
 * Visualize intermediate Layers
 
 
+![Test Image](dataset/test_set/cat_or_dog_2.jpg)
+
 ![Convolution 2D](feature_map.png)
 
-
-![Test Image](dataset/test_set/cat_or_dog_2.jpg)
 
 
 ## Getting started
 
 ### Initial Configuration
 
-The project is being developed in python using Keras. Install Keras by following the instructions from the link below.
+The project was developed in python using tensorflow keras. Follow the instruction to get your computer and the project setup
 
 ### Repo
 Clone the repository using.
