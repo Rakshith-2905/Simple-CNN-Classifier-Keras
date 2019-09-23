@@ -24,8 +24,10 @@ The project is being developed in python using Keras. Install Keras by following
 ### Repo
 Clone the repository using.
 ```shell
-git clone https://github.com/Rakshith-2905/.git
+git clone https://github.com/Rakshith-2905/Simple-CNN-Classifier-Keras.git
 ```
+
+Or download the repository as a zip file and extract the contents
 
 #### Dataset
 A sample dataset is available in the data folder.
