@@ -7,10 +7,11 @@
             |class-A/
             |class-B/
         
-        |test/
+        |valid/
             |class-A/
             |class-B/
-            
+        |test/
+            *.jpg    
     To train a simple classification network use the following command
     python train.py
 """

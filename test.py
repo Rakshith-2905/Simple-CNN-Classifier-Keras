@@ -62,15 +62,15 @@ def predict(model_path = 'model.h5',
         
         image = cv2.resize(image,(500,500))
         print(predicted_label)
-        # Add the prediction text to the image
-        cv2.putText(image, str(predicted_label), (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 3,(0,0,255),4,cv2.LINE_AA)
-        # Display the image
-        cv2.imshow('output', image)
-        
+
         # If the user wishes to visualize layers go ahead
         if layer_visu:
             visualize_activations(model, image_predict, layer_visu)
-            
+        
+        # Add the prediction text to the image
+        cv2.putText(image, str(predicted_label), (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 3,(0,0,255),4,cv2.LINE_AA)
+        # Display the image
+        cv2.imshow('output', image)            
         cv2.waitKey(0)
     
 def visualize_activations(model, image, layer_list):
@@ -89,6 +89,7 @@ def visualize_activations(model, image, layer_list):
     # Iterating through the layers and getting the names
     for layer in model.layers:
         layer_names.append(layer.name)
+        print(layer.name)
 
     # Extract the output of every layer
     layer_outputs = [layer.output for layer in model.layers]
@@ -130,7 +131,7 @@ def visualize_activations(model, image, layer_list):
                 channel_image = np.clip(channel_image, 0, 255).astype('uint8')
                 display_grid[col * size : (col + 1) * size,
                             row * size : (row + 1) * size] = channel_image
-
+        
         # Display the grid
         scale = 1. / size
         plt.figure(figsize=(scale * display_grid.shape[1],
@@ -148,4 +149,5 @@ if __name__ == "__main__":
     predict(model_path = 'model.h5', 
             data_path = 'dataset/test_set/', 
             image_size = (64,64,3),
-            n_images = 20)
+            n_images = 20,
+            layer_visu = [2,3])
