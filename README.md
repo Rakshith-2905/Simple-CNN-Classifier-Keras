@@ -81,13 +81,11 @@ Install Keras and tensorflow using the following command
 
 ```conda install -c anaconda keras```
 
-Install matlplotlib and numpy with the following commands
+Install image operations libraries with the following commands
 
 ```conda install matplotlib```
 ```conda install numpy```
-
-Install open cv to perform image operations
-
+```conda install pillow```
 ```conda install -c menpo opencv```
 
 ## Usage
