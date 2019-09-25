@@ -61,27 +61,37 @@ Follow this link for more help
 
 In Anaconda Prompt 
 
-Create a python3 virtual environment using conda
+Change the working directory to keras-CNN-Classification
+
+Use  ```cd..``` to move back in directory tree
+
+Use ```cd folder_name``` to move into a folder 
+
+
+After moving to the folder create a python3 virtual environment using conda, type ``y`` when prompted
 
 ```conda create -y --name tf python==3.6```
 
-Install the dependencies from requirements.txt
-
-```conda install -f -y -q --name tf -c conda-forge --file requirements.txt```
 
 Activate the environment
 
 ``` conda activate tf ```
 
+Install Keras and tensorflow using the following command
+
+```conda install -c anaconda keras```
+
+Install matlplotlib and numpy with the following commands
+
+```conda install matplotlib```
+```conda install numpy```
+
+Install open cv to perform image operations
+
+```conda install -c menpo opencv```
 
 ## Usage
 
-
-
-Install the required dependencies by the commans
-```shell
-pip install -r requirements.txt
-```
 * To Perform basic classification run
 ```shell
 python predict.py
