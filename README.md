@@ -9,23 +9,25 @@ What's all the bells and whistles this project can perform?
 * Visualize intermediate Layers
 
 
-![Convolution 2D][feature_map.png]
+![Test Image](dataset/test_set/cat_or_dog_2.jpg)
 
+![Convolution 2D](feature_map.png)
 
-![Test Image][dataset/test_set/cat_or_dog_2.jpg]
 
 
 ## Getting started
 
 ### Initial Configuration
 
-The project is being developed in python using Keras. Install Keras by following the instructions from the link below.
+The project was developed in python using tensorflow keras. Follow the instruction to get your computer and the project setup
 
 ### Repo
 Clone the repository using.
 ```shell
-git clone https://github.com/Rakshith-2905/.git
+git clone https://github.com/Rakshith-2905/Simple-CNN-Classifier-Keras.git
 ```
+
+Or download the repository as a zip file and extract the contents
 
 #### Dataset
 A sample dataset is available in the data folder.
